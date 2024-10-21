@@ -3,17 +3,21 @@ package com.debuggeandoideas.models;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
+
+import java.io.Serializable;
 
 @Getter
 @Setter
 @EqualsAndHashCode
-public abstract class Stone {
+@ToString
+public abstract class Stone implements Serializable {
 
-    String color;
-    String name;
-    String location;
-    Integer energyLevel;
-    Integer numberOfSides;
+    protected String color;
+    protected String name;
+    protected String location;
+    protected Integer energyLevel;
+    protected Integer numberOfSides;
 
     private static final int NUMBER_SIDES = 6;
 
@@ -30,4 +34,5 @@ public abstract class Stone {
     }
 
     public abstract void usePower();
+
 }
