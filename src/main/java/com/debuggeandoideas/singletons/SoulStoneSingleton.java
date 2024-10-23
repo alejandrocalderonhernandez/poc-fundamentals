@@ -7,7 +7,7 @@ import lombok.extern.java.Log;
 
 @Log
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class SoulStoneInstance {
+public class SoulStoneSingleton {
 
     private static volatile SoulStone soulStoneInstance;
 

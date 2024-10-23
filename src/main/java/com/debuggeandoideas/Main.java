@@ -1,5 +1,8 @@
 package com.debuggeandoideas;
 
+import com.debuggeandoideas.factories.PowerStoneFactory;
+import com.debuggeandoideas.factories.RealityStoneFactory;
+import com.debuggeandoideas.factories.TimeStoneFactory;
 import com.debuggeandoideas.models.MindStone;
 import com.debuggeandoideas.protoypes.Prototypes;
 import com.debuggeandoideas.services.GauntletServiceImpl;
@@ -10,13 +13,21 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // Instance 1
-        final var mind = new MindStone();
 
-        System.out.println(mind);
-        System.out.println(System.identityHashCode(mind));
+        System.setProperty("scope", "prototype");
 
-        // Instance 2
-        final var mindProto = mind.getPrototype();
+        final var timeStoneFactory = new TimeStoneFactory();
+        var timeStone = timeStoneFactory.createStone();
+
+        final var powerStoneFactory = new PowerStoneFactory();
+        var powerStone = powerStoneFactory.createStone();
+
+        final var realityStoneFactory = new RealityStoneFactory();
+        var realityStone = realityStoneFactory.createStone();
+
+
+        System.out.println(powerStone);
+        System.out.println(realityStone);
+        System.out.println(timeStone);
     }
 }
