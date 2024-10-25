@@ -1,33 +1,21 @@
 package com.debuggeandoideas;
 
-import com.debuggeandoideas.factories.PowerStoneFactory;
-import com.debuggeandoideas.factories.RealityStoneFactory;
-import com.debuggeandoideas.factories.TimeStoneFactory;
-import com.debuggeandoideas.models.MindStone;
-import com.debuggeandoideas.protoypes.Prototypes;
-import com.debuggeandoideas.services.GauntletServiceImpl;
-import com.debuggeandoideas.singletons.MindStoneSingleton;
+import com.debuggeandoideas.configs.StoneContext;
 
 public class Main {
 
 
     public static void main(String[] args) {
 
+        final var gauntletService = StoneContext.setContext(
+            pre -> System.out.println("Do something 1"),
+            post -> System.out.println("Do something 2")
+        );
 
-        System.setProperty("scope", "prototype");
+        gauntletService.useGauntlet("power");
 
-        final var timeStoneFactory = new TimeStoneFactory();
-        var timeStone = timeStoneFactory.createStone();
+        gauntletService.useFullPower();
 
-        final var powerStoneFactory = new PowerStoneFactory();
-        var powerStone = powerStoneFactory.createStone();
-
-        final var realityStoneFactory = new RealityStoneFactory();
-        var realityStone = realityStoneFactory.createStone();
-
-
-        System.out.println(powerStone);
-        System.out.println(realityStone);
-        System.out.println(timeStone);
+        StoneContext.destroyContext(gauntletService);
     }
 }

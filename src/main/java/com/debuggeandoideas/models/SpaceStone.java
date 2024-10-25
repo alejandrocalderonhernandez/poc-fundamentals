@@ -5,7 +5,7 @@ import lombok.extern.java.Log;
 
 import java.io.*;
 
-@ToString
+@ToString(callSuper = true)
 @Log
 public class SpaceStone extends Stone {
 
